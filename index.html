@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Sereń · твой магазин</title>
+<meta name="description" content="Что сделано на сайте Sereń, как управлять товарами и заказами, ответы на вопросы и что нужно от тебя.">
+<meta property="og:title" content="Sereń · твой магазин готов">
+<meta property="og:description" content="Что сделано, как управлять, ответы на вопросы и что нужно от тебя. Всё на одной странице.">
+<meta property="og:image" content="https://t2754445-debug.github.io/seren-k4m7/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f4f0ea">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234a3533'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23f4f0ea'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#4a3533; --ink-soft:#7d6a66; --rose:#9a6f72; --lining:#e9e1d6; --ivory:#f4f0ea; --paper:#fbf8f3;
+  --gold:#b8975a; --gold-l:#d9c39a; --line:#ddd2c4; --ok:#6f8a6a;
+  --serif:'Forum',Georgia,serif; --sans:'Manrope',system-ui,sans-serif; --script:'Great Vibes',cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font:400 16px/1.6 var(--sans);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.script{font-family:var(--script);color:var(--rose);font-size:34px;line-height:1;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(34px,6vw,52px);line-height:1.05;margin:6px 0 18px}
+h3{font-size:24px;line-height:1.15}
+.kicker{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+.lead{font-size:17px;color:var(--ink-soft);max-width:620px;margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:0;border-radius:2px;
+  padding:15px 24px;font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s}
+.btn:hover{background:#3a2826;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+section.block{padding:90px 0 40px}
+section.block,#pay{scroll-margin-top:60px}
+.stitch{border:1px dashed rgba(184,151,90,.75);outline:6px solid var(--paper);outline-offset:0}
+
+/* ---------- первый экран: молния ---------- */
+.hero{position:relative;height:210svh}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:
+  repeating-linear-gradient(135deg,rgba(74,53,51,.028) 0 2px,transparent 2px 7px),linear-gradient(180deg,#f6f1ea,#ece3d7)}
+.inside{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:clamp(80px,13vh,140px) 22px 60px}
+.inside .box{max-width:640px}
+.inside h1{font-size:clamp(44px,9vw,84px);line-height:1;margin:8px 0 18px}
+.inside p{color:var(--ink-soft);font-size:17px;margin:0 auto 28px;max-width:520px}
+.inside .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.flap{position:absolute;inset:0;background:url(img/botanic.jpg) center/cover;will-change:clip-path}
+.flap.r{background-position:center}
+.flap::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0) 40%,rgba(60,40,30,.10) 50%,rgba(0,0,0,0) 60%)}
+#teeth{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.pull{position:absolute;left:0;top:0;width:44px;height:120px;margin-left:-22px;margin-top:-14px;cursor:grab;touch-action:none;z-index:5}
+.pull:active{cursor:grabbing}
+.pull .tab{position:absolute;left:12px;top:0;width:20px;height:44px;border-radius:5px 5px 8px 8px;
+  background:linear-gradient(90deg,#9d7d45,#e4cd98 45%,#b8975a 60%,#8a6b38);box-shadow:0 3px 8px rgba(60,40,20,.35)}
+.pull .tab::after{content:"";position:absolute;left:6px;top:8px;width:8px;height:22px;border-radius:4px;background:rgba(80,55,25,.35)}
+.pull .tassel{position:absolute;left:14px;top:40px;width:16px;height:70px;transform-origin:50% 0;
+  background:repeating-linear-gradient(90deg,#efe4cf 0 2px,#e2d3b6 2px 3px);clip-path:polygon(30% 0,70% 0,100% 100%,0 100%);border-radius:0 0 4px 4px}
+.label{position:absolute;left:5vw;top:50%;width:min(300px,74vw);padding:26px 22px;background:var(--paper);text-align:center;
+  transform:translateY(-50%) rotate(-2.5deg);box-shadow:0 18px 40px rgba(60,40,30,.22);z-index:4}
+.label::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(154,111,114,.55)}
+.label b{display:block;font:400 54px/1 var(--serif)}
+.label small{display:block;margin-top:10px;font:600 10px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.label i{display:block;font:normal 30px/1.2 var(--script);color:var(--rose);margin-top:8px}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:rgba(251,248,243,.92);padding:10px 16px;
+  font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;z-index:4;transition:opacity .3s}
+.brand{position:absolute;left:18px;top:16px;background:rgba(251,248,243,.92);padding:6px 14px;font:400 24px/1.2 var(--serif);z-index:4;text-decoration:none}
+
+/* ---------- верхнее меню ---------- */
+.nav{position:fixed;left:0;right:0;top:0;z-index:50;background:rgba(244,240,234,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);transform:translateY(-100%);transition:transform .35s}
+.nav.on{transform:none}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:56px}
+.nav .logo{font:400 24px/1 var(--serif);text-decoration:none;margin-right:auto}
+.nav a.l{font:600 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);white-space:nowrap}
+.nav a.l.cur{color:var(--ink);box-shadow:0 2px 0 var(--gold)}
+@media (max-width:720px){.nav .links{display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;max-width:68vw}.nav .links::-webkit-scrollbar{display:none}}
+@media (min-width:721px){.nav .links{display:flex;gap:26px}}
+
+/* ---------- что сделано ---------- */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:10px 0 50px}
+.stat{background:var(--paper);padding:20px 14px;text-align:center;position:relative}
+.stat::before{content:"";position:absolute;inset:6px;border:1px dashed rgba(184,151,90,.5);pointer-events:none}
+.stat b{display:block;font:400 46px/1 var(--serif)}
+.stat span{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.35}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.stat:last-child{grid-column:span 2}}
+
+.timeline{position:relative;margin:0 0 60px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;border-left:2px dashed var(--gold-l)}
+.step{position:relative;margin:0 0 26px;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.step.in{opacity:1;transform:none}
+.step::before{content:attr(data-n);position:absolute;left:-34px;top:0;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;
+  font:600 11px/22px var(--sans);text-align:center}
+.step h3{margin-bottom:6px}
+.step p{margin:0;color:var(--ink-soft);max-width:680px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-size:12.5px;background:var(--paper);border:1px solid var(--line);padding:5px 11px;border-radius:30px;text-decoration:none}
+a.chip:hover{border-color:var(--gold)}
+
+.phones{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 20px 26px;margin:0 -20px;scrollbar-width:thin}
+.phone{flex:0 0 220px;scroll-snap-align:center;text-decoration:none}
+.phone .frame{background:#2b211f;border-radius:30px;padding:7px;box-shadow:0 20px 40px rgba(60,40,30,.25);transition:transform .3s}
+.phone:hover .frame{transform:translateY(-6px) rotate(-1deg)}
+.phone img{border-radius:24px;aspect-ratio:390/844;object-fit:cover;object-position:top;width:100%}
+.phone p{margin:14px 4px 0;font-size:14px;line-height:1.4;color:var(--ink-soft)}
+.phone p b{display:block;color:var(--ink);font:400 20px/1.2 var(--serif);margin-bottom:2px}
+.swipe{font-size:12px;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px}
+@media (min-width:1000px){.swipe{display:none}.phones{overflow:visible;margin:0;padding:10px 0 26px}.phone{flex:1 1 0;min-width:0}}
+
+/* ---------- управление ---------- */
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:30px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-b{background:none;border:0;padding:14px 16px;font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+  cursor:pointer;position:relative;white-space:nowrap}
+.tab-b[aria-selected=true]{color:var(--ink)}
+.tab-b[aria-selected=true]::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--gold)}
+.panel{display:none;animation:fade .45s}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.path{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 20px;font-size:13.5px}
+.path span{background:var(--paper);border:1px solid var(--line);padding:5px 10px}
+.path i{font-style:normal;color:var(--gold)}
+ol.howto{margin:0 0 26px;padding-left:22px;max-width:720px}
+ol.howto li{margin-bottom:8px}
+.note{background:var(--paper);border-left:3px solid var(--gold);padding:14px 18px;margin:18px 0;max-width:760px;font-size:15px}
+.note.warn{border-left-color:var(--rose)}
+
+.demo{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;background:var(--paper);padding:26px;margin-top:10px;position:relative}
+.demo::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(184,151,90,.45);pointer-events:none}
+.demo h4{margin:0 0 14px;font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+@media (max-width:820px){.demo{grid-template-columns:1fr;padding:20px 16px}}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{font:600 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-align:left;padding:0 6px 10px}
+.tbl td{border-top:1px solid var(--line);padding:9px 6px;vertical-align:middle}
+.tbl td.nm{display:flex;align-items:center;gap:10px;min-width:0}
+.tbl td.nm img{width:38px;height:38px;object-fit:cover;border-radius:2px;flex:none}
+.tbl input.price{width:76px;border:1px solid var(--line);background:#fff;padding:6px 7px;font:inherit;font-size:14px;border-radius:2px;color:var(--ink)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);background:#fff}
+.qty button{border:0;background:none;width:28px;height:30px;cursor:pointer;font-size:16px}
+.qty output{min-width:22px;text-align:center}
+.sw{position:relative;width:40px;height:22px;border-radius:22px;background:#cfc4b6;border:0;cursor:pointer;transition:background .2s;flex:none}
+.sw::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .2s}
+.sw[aria-checked=true]{background:var(--ok)}
+.sw[aria-checked=true]::after{left:21px}
+.demo>div{min-width:0}
+@media (max-width:520px){.demo{padding:18px 10px}.tbl{font-size:13px}.tbl th{font-size:9px;letter-spacing:.06em;padding:0 3px 8px}.tbl td{padding:8px 3px}
+  .tbl td.nm{gap:6px}.tbl td.nm img{width:28px;height:28px}.tbl input.price{width:56px;padding:5px 4px;font-size:13px}
+  .qty button{width:22px}.qty output{min-width:16px}.sw{width:34px;height:20px}.sw::after{width:14px;height:14px}.sw[aria-checked=true]::after{left:17px}}
+.shop{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:#fff;text-align:center;padding-bottom:12px;transition:opacity .35s,transform .35s,filter .35s;position:relative}
+.card img{aspect-ratio:1;object-fit:cover;width:100%}
+.card b{display:block;font:400 17px/1.2 var(--serif);margin:9px 6px 2px}
+.card .pr{font-size:14px}
+.card .st{display:inline-block;margin-top:6px;font:600 9.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:6px 9px;background:var(--ink);color:#fff}
+.card.out .st{background:#d8cfc4;color:var(--ink-soft)}
+.card.out img{filter:grayscale(.7) opacity(.7)}
+.card.off{opacity:.18;transform:scale(.96);filter:blur(1px)}
+.card.off::after{content:"скрыт";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 28px var(--script);color:var(--ink);filter:none}
+
+.kanban{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
+.col{background:var(--lining);min-height:170px;padding:10px;cursor:pointer;transition:background .2s}
+.col:hover{background:#e2d8ca}
+.col h5{margin:0 0 10px;font:600 10.5px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.col.cur h5{color:var(--ink)}
+.order{background:#fff;padding:11px;font-size:13px;line-height:1.45;box-shadow:0 6px 16px rgba(60,40,30,.12);animation:pop .4s;cursor:default}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+.order b{font:400 16px/1.2 var(--serif);display:block;margin-bottom:3px}
+.order .next{margin-top:9px;width:100%;border:0;background:var(--ink);color:#fff;padding:8px;font:600 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.stage-hint{margin:16px 0 0;font-size:15px;min-height:48px}
+.stage-hint b{font-family:var(--serif);font-size:19px;font-weight:400}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0 6px}
+.mess{background:var(--paper);padding:20px;position:relative}
+.mess h3{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.mess .dot{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font:700 12px var(--sans)}
+.mess p{margin:0;font-size:15px;color:var(--ink-soft)}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+
+/* ---------- ответы ---------- */
+details.qa{background:var(--paper);margin:0 0 12px;position:relative}
+details.qa summary{list-style:none;cursor:pointer;padding:22px 56px 22px 22px;font:400 22px/1.25 var(--serif);position:relative}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"";position:absolute;right:24px;top:50%;width:12px;height:12px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);
+  transform:translateY(-70%) rotate(45deg);transition:transform .3s}
+details.qa[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+details.qa summary small{display:block;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:8px}
+.ans{padding:0 22px 24px;max-width:780px}
+.ans p{margin:0 0 12px}
+.checks{list-style:none;padding:0;margin:8px 0 14px}
+.checks li{padding:7px 0 7px 32px;position:relative;border-top:1px solid var(--line)}
+.checks li::before{content:"";position:absolute;left:2px;top:10px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold)}
+.checks li.done::before{background:var(--ok);border-color:var(--ok)}
+.checks li.done::after{content:"";position:absolute;left:8px;top:13px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.checks li span{display:block;font-size:13.5px;color:var(--ink-soft)}
+
+.calc{background:#fff;padding:20px;margin:16px 0}
+.calc label{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;color:var(--ink-soft)}
+.calc label b{font:400 clamp(24px,7vw,30px)/1 var(--serif);color:var(--ink);white-space:nowrap}
+.calc input[type=range]{width:100%;margin:14px 0 20px;accent-color:var(--ink)}
+.bar{display:grid;grid-template-columns:150px 1fr 90px;gap:12px;align-items:center;margin:0 0 12px;font-size:14px}
+.bar .t{height:12px;background:var(--lining);position:relative;overflow:hidden}
+.bar .t i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--gold),#cfb27a);transition:width .35s}
+.bar .v{text-align:right;font-weight:600}
+.bar small{display:block;color:var(--ink-soft);font-size:12px;line-height:1.3}
+@media (max-width:560px){.bar{grid-template-columns:1fr 80px}.bar .t{grid-column:1/3;order:3}}
+.src{font-size:12.5px;color:var(--ink-soft);margin-top:20px}
+.src a{color:var(--ink-soft)}
+
+/* ---------- что нужно ---------- */
+.prog{display:flex;align-items:center;gap:16px;margin:0 0 26px}
+.track{flex:1;height:10px;background:repeating-linear-gradient(90deg,#d6cbbb 0 3px,transparent 3px 6px);position:relative}
+.track i{position:absolute;left:0;top:0;bottom:0;background:repeating-linear-gradient(90deg,var(--gold) 0 3px,#e9d7af 3px 6px);transition:width .5s}
+.prog b{font:400 26px/1 var(--serif);white-space:nowrap}
+.need{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.need{grid-template-columns:1fr}}
+.ask{background:var(--paper);padding:20px;position:relative;transition:box-shadow .3s}
+.ask.done{box-shadow:inset 0 0 0 1.5px var(--ok)}
+.ask h3{font-size:21px;padding-right:34px;margin-bottom:4px}
+.ask .n{position:absolute;right:18px;top:18px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--gold);font:600 12px/23px var(--sans);text-align:center;color:var(--ink-soft)}
+.ask.done .n{background:var(--ok);border-color:var(--ok);color:#fff}
+.ask p{margin:0 0 12px;font-size:14px;color:var(--ink-soft)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fields.one{grid-template-columns:1fr}
+.f{display:flex;flex-direction:column;font-size:12px;color:var(--ink-soft);gap:4px}
+.f input,.f textarea{border:1px solid var(--line);background:#fff;padding:9px 10px;font:inherit;font-size:15px;color:var(--ink);border-radius:2px;width:100%}
+.f input:focus,.f textarea:focus{outline:2px solid var(--gold-l);border-color:var(--gold)}
+.yn{display:flex;gap:8px;margin-bottom:10px}
+.yn button{flex:1;border:1px solid var(--line);background:#fff;padding:9px;cursor:pointer}
+.yn button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.send{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:26px 0 10px}
+.toast{font-size:14px;color:var(--ok);opacity:0;transition:opacity .3s}
+.toast.on{opacity:1}
+.priv{font-size:12.5px;color:var(--ink-soft)}
+
+/* ---------- пакет ---------- */
+.tally{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 26px}
+.tally a{text-decoration:none;transition:transform .2s}.tally a:hover{transform:translateY(-2px)}
+@media (max-width:760px){.tally{grid-template-columns:1fr 1fr}}
+.extra{margin:44px 0 0;padding:30px 26px;background:var(--ink);color:#fff;scroll-margin-top:60px}
+.extra .script{color:var(--gold-l);font-size:32px}
+.extra h3{font-size:32px;margin:4px 0 12px}
+.extra>p{margin:0 0 20px;max-width:720px;color:#eadfce}
+.extra .it{background:#5a4340;color:#fff}
+.extra .it .more{color:#e2d5c3}.extra .it .tag{color:var(--gold-l)}
+.extra-talk{font:400 24px/1.3 var(--serif)!important;color:#fff!important;margin:24px 0 16px!important}
+.btn.light{background:var(--paper);color:var(--ink)}.btn.light:hover{background:#fff}
+#joy{margin-top:26px;max-width:none;scroll-margin-top:60px}
+#joy .items{margin-top:14px}
+#joy .it{background:#fff}
+#items{scroll-margin-top:120px}
+@media (max-width:480px){.extra{padding:24px 16px}}
+.tl{background:var(--paper);padding:18px 12px;text-align:center}
+.tl b{display:block;font:400 44px/1 var(--serif)}
+.tl span{font-size:13px;color:var(--ink-soft)}
+.tl.gold{background:var(--ink);color:#fff}.tl.gold span{color:#e6d6bd}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.filters button{border:1px solid var(--line);background:var(--paper);padding:9px 15px;border-radius:30px;cursor:pointer;font-size:14px}
+.filters button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:760px){.items{grid-template-columns:1fr}}
+.it{background:var(--paper);padding:15px 16px 15px 52px;position:relative;cursor:pointer;transition:opacity .3s,transform .3s}
+.it.hide{display:none}
+.it::before{content:"";position:absolute;left:16px;top:16px;width:22px;height:22px;border-radius:50%}
+.it.done::before{background:var(--ok)}
+.it.done::after{content:"";position:absolute;left:24px;top:20px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.it.todo::before{border:1.5px dashed var(--gold)}
+.it.plus::before{background:var(--gold)}
+.pay{margin:44px 0 0;padding:28px 26px;background:transparent;border:1.5px dashed var(--gold);position:relative;max-width:900px}
+.pay .script{font-size:30px}
+.pay h3{font-size:30px;margin:4px 0 12px}
+.pay p{margin:0 0 10px;max-width:720px}
+.pay-steps{list-style:none;counter-reset:s;padding:0;margin:20px 0 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pay-steps li{counter-increment:s;background:var(--paper);padding:14px 14px 14px 46px;position:relative;font-size:14px;line-height:1.35}
+.pay-steps li::before{content:counter(s);position:absolute;left:14px;top:13px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font:600 11px/22px var(--sans);text-align:center}
+.pay-steps b{display:block;font-weight:600;margin-bottom:3px}
+.pay-steps span{color:var(--ink-soft);font-size:13px}
+.pay-price{font:400 21px/1.3 var(--serif);margin:0!important}
+@media (max-width:860px){.pay-steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.pay{padding:22px 16px}.pay-steps{grid-template-columns:1fr}}
+.it.my::before{background:var(--rose)}
+.it.my::after{content:"♡";position:absolute;left:16px;top:16px;width:22px;text-align:center;font:600 13px/22px var(--sans);color:#fff}
+.approach{background:var(--paper);border-left:3px solid var(--rose);padding:16px 20px;margin:0 0 22px;max-width:760px}
+.approach .script{font-size:30px;margin-bottom:4px}
+.approach p{margin:0;font-size:15.5px}
+.it.plus::after{content:"+";position:absolute;left:16px;top:16px;width:22px;text-align:center;font:600 16px/22px var(--sans);color:#fff}
+.it b{display:block;font-weight:600;font-size:15px;line-height:1.35}
+.it .tag{display:inline-block;margin-top:5px;font:600 9.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.it{cursor:default}
+.it .more{font-size:14px;color:var(--ink-soft)}
+.it .more p{margin:8px 0 0}
+@media (max-width:520px){.tl b{font-size:34px}.tl span{font-size:12px}}
+
+footer{padding:60px 0 50px;text-align:center;color:var(--ink-soft);font-size:14px}
+footer .script{font-size:40px;margin-bottom:8px}
+@media (prefers-reduced-motion:reduce){.step{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav"><div class="wrap">
+  <a class="logo" href="#top">Sereń</a>
+  <div class="links">
+    <a class="l" href="#work">Сделано</a>
+    <a class="l" href="#pack">Пакет</a>
+    <a class="l" href="#manage">Управление</a>
+    <a class="l" href="#answers">Ответы</a>
+    <a class="l" href="#need">Нужно от тебя</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="stage" id="stage">
+    <div class="inside"><div class="box">
+      <span class="script">загляни внутрь</span>
+      <h1>Твой магазин готов</h1>
+      <p>Вчера был прототип, сегодня полноценный сайт на Тильде: каталог, карточки товаров, корзина и заказы. Здесь всё, что сделано, как этим управлять, ответы на твои вопросы и что нужно от тебя.</p>
+      <div class="btns">
+        <a class="btn" href="https://visit-newborn-biotite.tilda.ws" target="_blank" rel="noopener">Открыть сайт</a>
+        <a class="btn ghost" href="#work">Что сделано</a>
+      </div>
+    </div></div>
+    <div class="flap l" id="fl"></div>
+    <div class="flap r" id="fr"></div>
+    <svg id="teeth" aria-hidden="true"></svg>
+    <div class="pull" id="pull" aria-label="Бегунок молнии"><div class="tab"></div><div class="tassel" id="tassel"></div></div>
+    <a class="brand" href="#top">Sereń</a>
+    <div class="label" id="label"><b>Sereń</b><small>косметички · органайзеры · чехлы</small><i>для Юлии</i></div>
+    <div class="hint" id="hint">потяни за бегунок или листай</div>
+  </div>
+</header>
+
+<main>
+<!-- ================= ЧТО СДЕЛАНО ================= -->
+<section class="block" id="work"><div class="wrap">
+  <span class="script">что сделано</span>
+  <h2>Из прототипа в магазин</h2>
+  <p class="lead">Прочитал твоё сообщение и доделал. Теперь это сайт с каталогом, на котором товары и остатки меняешь сама.</p>
+
+  <div class="stats" id="stats">
+    <div class="stat"><b data-to="15">0</b><span>изделий в каталоге</span></div>
+    <div class="stat"><b data-to="10">0</b><span>уже с ценой и в продаже</span></div>
+    <div class="stat"><b data-to="3">0</b><span>раздела: косметички, в дорогу, для ноутбука</span></div>
+    <div class="stat"><b data-to="6">0</b><span>страниц плюс карточка на каждое изделие</span></div>
+    <div class="stat"><b data-to="3">0</b><span>способа доставки в корзине</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="step" data-n="1"><h3>Разобрал твой инстаграм</h3>
+      <p>Посты, подписи и сторис «Как купить», «Доставка», «В наличии». Оттуда фото, размеры, ткани и истории изделий. Тексты на сайте написаны по твоим словам.</p></div>
+    <div class="step" data-n="2"><h3>Стиль как у твоих карточек</h3>
+      <p>Шрифты Forum, Manrope и рукописный Great Vibes, цвета ткани и подкладки. На первом экране косметичка из Botanic: листаешь, и молния расстёгивается, внутри коллекция. В историях тканей лупа показывает фактуру.</p>
+      <div class="chips"><a class="chip" href="https://visit-newborn-biotite.tilda.ws" target="_blank" rel="noopener">Главная с молнией ↗</a></div></div>
+    <div class="step" data-n="3"><h3>Каталог Тильды</h3>
+      <p>15 изделий в трёх разделах. У каждого своя страница: фото, цена, размер, материал, описание, кнопка «В корзину». Ссылку на карточку можно скинуть клиентке в директ. У Alula выбор: без цепочки 5 700 ₽ или с цепочкой 7 200 ₽.</p>
+      <div class="chips"><a class="chip" href="https://visit-newborn-biotite.tilda.ws/catalog" target="_blank" rel="noopener">Каталог ↗</a><a class="chip" href="https://visit-newborn-biotite.tilda.ws/tproduct/377093743343-kosmetichka-alula" target="_blank" rel="noopener">Карточка Alula ↗</a></div></div>
+    <div class="step" data-n="4"><h3>Корзина и заказы без оплаты</h3>
+      <p>Как ты и хотела: покупательница собирает корзину, выбирает доставку и оформляет заказ без оплаты. Заказ падает в CRM Тильды со статусами. Ссылку на оплату отправляешь сама.</p></div>
+    <div class="step" data-n="5"><h3>Страницы для покупательниц</h3>
+      <p>О бренде, Доставка и оплата с порядком заказа и возвратом. Оферта и политика конфиденциальности в подвале сайта: они нужны по закону, раз сайт собирает имя и телефон.</p>
+      <div class="chips"><a class="chip" href="https://visit-newborn-biotite.tilda.ws/about" target="_blank" rel="noopener">О бренде ↗</a><a class="chip" href="https://visit-newborn-biotite.tilda.ws/delivery" target="_blank" rel="noopener">Доставка и оплата ↗</a></div></div>
+    <div class="step" data-n="6"><h3>Проверил на телефоне</h3>
+      <p>Большая часть покупок будет с телефона, из инстаграма. Каждый экран прошёл на ширине айфона: меню, каталог, карточка, корзина.</p></div>
+  </div>
+
+  <p class="swipe">листай вбок →</p>
+  <div class="phones">
+    <a class="phone" href="https://visit-newborn-biotite.tilda.ws" target="_blank" rel="noopener"><div class="frame"><img src="img/m_000.jpg" alt="Первый экран с молнией" loading="lazy"></div>
+      <p><b>Первый экран</b>Молния на ткани Botanic. Тянешь бегунок или листаешь.</p></a>
+    <a class="phone" href="https://visit-newborn-biotite.tilda.ws" target="_blank" rel="noopener"><div class="frame"><img src="img/m_100.jpg" alt="Молния расстёгнута" loading="lazy"></div>
+      <p><b>Внутри</b>Расстегнулась: заголовок, кнопка в каталог и −10% на первую покупку.</p></a>
+    <a class="phone" href="https://visit-newborn-biotite.tilda.ws/catalog" target="_blank" rel="noopener"><div class="frame"><img src="img/mob_cat_top.jpg" alt="Каталог" loading="lazy"></div>
+      <p><b>Каталог</b>Разделы сверху: косметички, в дорогу, для ноутбука.</p></a>
+    <a class="phone" href="https://visit-newborn-biotite.tilda.ws/tproduct/377093743343-kosmetichka-alula" target="_blank" rel="noopener"><div class="frame"><img src="img/mob_product.jpg" alt="Карточка товара" loading="lazy"></div>
+      <p><b>Карточка</b>Фото, цена, выбор цепочки и кнопка «В корзину».</p></a>
+    <a class="phone" href="https://visit-newborn-biotite.tilda.ws/catalog" target="_blank" rel="noopener"><div class="frame"><img src="img/mob_cart.jpg" alt="Корзина" loading="lazy"></div>
+      <p><b>Корзина</b>Имя, телефон, почта, доставка. Без оплаты на сайте.</p></a>
+  </div>
+</div></section>
+
+<!-- ================= ПАКЕТ 5000 ================= -->
+<section class="block" id="pack"><div class="wrap">
+  <span class="script">сайт за 5 000 ₽</span>
+  <h2>Что входит и что сверх пакета</h2>
+  <p class="lead">Ты пришла на сайт на Тильде за 5 000 ₽. Вот что в него входит и что уже готово. Ниже отдельно то, что сделал сверх пакета: это нужно проговорить.</p>
+
+  <div class="tally">
+    <a class="tl" href="#items"><b id="tIn">0</b><span>пунктов пакета готово</span></a>
+    <a class="tl" href="#items"><b id="tTodo">0</b><span>доделаю по пакету</span></a>
+    <a class="tl gold" href="#extra"><b id="tPlus">0</b><span>сверх пакета, обсудим</span></a>
+    <a class="tl" href="#joy"><b id="tMy">0</b><span>с удовольствием</span></a>
+  </div>
+
+  <div class="filters" id="filters">
+    <button type="button" data-s="all" aria-pressed="true">Весь пакет</button>
+    <button type="button" data-s="done" aria-pressed="false">Готово</button>
+    <button type="button" data-s="todo" aria-pressed="false">Доделаю</button>
+  </div>
+  <div class="items" id="items"></div>
+
+  <div class="extra" id="extra">
+    <span class="script">сверх пакета</span>
+    <h3>Интернет-магазин</h3>
+    <p>Сайт за 5 000 ₽ это одна страница с формой заявки. Ты просила магазин, поэтому сделал его сразу: чтобы ты увидела, как он будет работать, и могла потрогать.</p>
+    <div class="items" id="extraItems"></div>
+    <p class="extra-talk">Эту часть проговорим и определимся по стоимости.</p>
+  </div>
+
+  <div class="approach" id="joy"><span class="script">с удовольствием</span><p>Работаю так, чтобы со мной было просто, понятно и наглядно. Это мой подход, он входит в любую мою работу.</p>
+    <div class="items" id="joyItems"></div></div>
+
+  <div class="pay" id="pay">
+    <span class="script">отдельным шагом</span>
+    <h3>Онлайн-оплата в корзине</h3>
+    <p>В сайт за 5 000 ₽ не входит и делается отдельно, когда сайт готов полностью. Сейчас заказы приходят без оплаты, ссылку на оплату отправляешь сама.</p>
+    <p>Почему потом: перед подключением банк проверяет сайт и ИП, на это нужно время. К проверке на сайте уже должны быть цены, оферта с реквизитами, доставка и контакты.</p>
+    <ol class="pay-steps">
+      <li><b>Доделываем сайт</b><span>цены, остатки, реквизиты, домен</span></li>
+      <li><b>Выбираешь банк</b><span>сравнение комиссий ниже, в ответе про оплату</span></li>
+      <li><b>Банк проверяет</b><span>заявку подаёшь ты, проверка идёт на стороне банка</span></li>
+      <li><b>Подключаю оплату</b><span>в корзину, с чеками для налоговой</span></li>
+    </ol>
+    <p class="pay-price">Стоимость обсудим отдельно, это недорого.</p>
+  </div>
+</div></section>
+
+<!-- ================= УПРАВЛЕНИЕ ================= -->
+<section class="block" id="manage"><div class="wrap">
+  <span class="script">как управлять самой</span>
+  <h2>Товары, заказы, уведомления</h2>
+  <p class="lead">Сайт будет в твоём личном аккаунте Тильды, зарегистрированном на тебя. Ниже по шагам, а в рамках можно потрогать, как это работает.</p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab-b" role="tab" aria-selected="true" data-p="p-goods">Товары и остатки</button>
+    <button class="tab-b" role="tab" aria-selected="false" data-p="p-orders">Заказы</button>
+    <button class="tab-b" role="tab" aria-selected="false" data-p="p-notify">Уведомления</button>
+  </div>
+
+  <div class="panel on" id="p-goods">
+    <div class="path"><span>Тильда</span><i>→</i><span>Мои сайты</span><i>→</i><span>Sereń</span><i>→</i><span>Каталог товаров</span></div>
+    <ol class="howto">
+      <li><b>Новый товар:</b> кнопка «+ Добавить», дальше название, фото, цена, описание и раздел.</li>
+      <li><b>Цена и остатки</b> меняются прямо в таблице, в колонках «Цена» и «Кол-во». Поставишь 0, на сайте будет «нет в наличии».</li>
+      <li><b>Убрать товар с сайта:</b> переключатель «Видимость».</li>
+    </ol>
+    <div class="demo">
+      <div>
+        <h4>Попробуй: так выглядит таблица</h4>
+        <table class="tbl" id="tbl">
+          <thead><tr><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Видимость</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div>
+        <h4>А так сразу на сайте</h4>
+        <div class="shop" id="shop"></div>
+      </div>
+    </div>
+    <div class="note">Публиковать сайт после правок не нужно: каталог обновляется сам.</div>
+    <div class="note"><b>Новое изделие</b> само появится на главной и в каталоге и получит свою карточку по тому же шаблону. Чтобы оно выглядело как остальные, заполни:
+      <ol style="margin:8px 0 0;padding-left:20px">
+        <li>Раздел: косметички, в дорогу или для ноутбука.</li>
+        <li>Краткое описание в том же формате: «Гобелен · 22 × 14 см».</li>
+        <li>Характеристики «Размер» и «Материал».</li>
+        <li>2–3 фото, лучше квадратных и на светлом фоне.</li>
+      </ol>
+      Не обновятся сами только три фото-поляроида на первом экране и истории тканей: они собраны вручную. Если захочешь их поменять, напиши.</div>
+    <div class="note">Terra, Mist, Area, Velvet и капсула заведены, но скрыты: цен в постах не нашёл. Ставишь цену, включаешь видимость, и они появятся. Остальные изделия из твоих 25 можешь завести сама, заодно проверишь, насколько это просто. Или пришли фото и описания, заведу.</div>
+  </div>
+
+  <div class="panel" id="p-orders">
+    <div class="path"><span>crm.tilda.ru</span><i>→</i><span>Sereń</span><i>→</i><span>Заказы магазина</span></div>
+    <p style="max-width:720px;margin:0 0 20px">В карточке заказа состав, сумма, контакты, доставка и статус. Статус меняешь, перетаскивая карточку в нужную колонку. Попробуй: нажми «Дальше» или на любую колонку.</p>
+    <div class="kanban" id="kanban"></div>
+    <p class="stage-hint" id="stageHint"></p>
+  </div>
+
+  <div class="panel" id="p-notify">
+    <p style="max-width:720px;margin:0 0 18px">Тильда сообщает о новом заказе в Telegram и в MAX. У неё для этого официальные боты, платить за них не нужно. В сообщении состав заказа, сумма и контакты покупательницы. Можно получать себе в личку или в общий чат, если заказы смотрит ещё кто-то.</p>
+    <div class="two">
+      <div class="mess"><h3><span class="dot" style="background:#2aa3df">TG</span>Telegram</h3><p>Бот @tildaformsbot. Нажимаешь «Старт», он присылает два ключа, я вставляю их в настройки сайта.</p></div>
+      <div class="mess"><h3><span class="dot" style="background:linear-gradient(135deg,#3b6cf6,#9b4dff)">M</span>MAX</h3><p>Бот tildaforms_bot в MAX. Всё так же: «Начать», два ключа, настройки сайта.</p></div>
+    </div>
+    <div class="note warn"><b>Один момент по закону.</b> Серверы Telegram за границей, а имя и телефон покупательницы это персональные данные. Для Telegram нужно ещё уведомление в Роскомнадзор о передаче данных за рубеж. MAX российский, для него не нужно. Совет: MAX. Или Telegram плюс уведомление.</div>
+    <p style="max-width:720px">Подключим на твой мессенджер вместе: понадобятся 5 минут и твой телефон под рукой.</p>
+  </div>
+</div></section>
+
+<!-- ================= ОТВЕТЫ ================= -->
+<section class="block" id="answers"><div class="wrap">
+  <span class="script">ответы на вопросы</span>
+  <h2>Разобрался по каждому</h2>
+  <p class="lead">Что знал по практике, написал сразу. Что нужно было уточнить, проверил по справке Тильды и сайтам банков. Цены на 1 ноября 2026.</p>
+
+  <details class="qa" open>
+    <summary><small>Вопрос 1</small>Можно ли пробрасывать заказ из корзины в Telegram или MAX?</summary>
+    <div class="ans">
+      <p><b>Да, оба.</b> Заказ из корзины приходит сообщением: что выбрали, сумма, имя и телефон. Подключается в настройках сайта через официальные боты Тильды, отдельно не платится.</p>
+      <p>Совет: MAX. Telegram держит данные за границей, и для него нужно уведомление в Роскомнадзор о передаче данных за рубеж. Для MAX не нужно. Подробнее во вкладке «Уведомления» выше.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary><small>Вопрос 2</small>Можно ли посадить сайт на свой домен?</summary>
+    <div class="ans">
+      <p><b>Да.</b> Нужен платный тариф Тильды: Personal стоит 500 ₽ в месяц при оплате за год (6 000 ₽) или 750 ₽ помесячно.</p>
+      <p>При оплате тарифа за год Тильда дарит домен .ru на первый год. Дальше продление 1 199 ₽ в год. Домен оформляется на владельца, то есть на тебя.</p>
+      <p><b>serenstudio.ru</b>, как в инстаграме, по проверке сейчас свободен. Подключение занимает от 3 до 24 часов, сертификат для https бесплатный.</p>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary><small>Вопрос 3</small>Где Тильда хранит персональные данные? С точки зрения закона это ок?</summary>
+    <div class="ans">
+      <p><b>Ок.</b> Если в профиле Тильды стоит страна Россия ( в твоём аккаунте поставим её при регистрации), заявки и заказы хранятся на российских серверах: Selectel и Яндекс Облако. За границу не передаются. Закон о персональных данных ( 152-ФЗ) требует именно этого.</p>
+      <p>Отвечает за данные по закону владелец сайта, то есть ИП. Что для этого нужно:</p>
+      <ul class="checks">
+        <li class="done">Хранение в России<span>Делает Тильда: Selectel и Яндекс Облако</span></li>
+        <li class="done">Политика конфиденциальности<span>Уже на сайте, ссылка в подвале</span></li>
+        <li class="done">Оферта<span>Уже на сайте. Впишу твои реквизиты, когда пришлёшь</span></li>
+        <li class="done">Галочка согласия в корзине не нужна<span>Для заказа основание сам договор купли-продажи</span></li>
+        <li>Уведомление в Роскомнадзор<span>Подаётся один раз на pd.rkn.gov.ru, в нём указать Selectel и Яндекс Облако. Без него штраф для ИП до 300 тыс. ₽</span></li>
+        <li>Плашка про cookie<span>Только если подключим Яндекс Метрику</span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary><small>Вопрос 4</small>Сколько будет стоить онлайн-оплата, когда её подключим?</summary>
+    <div class="ans">
+      <p>Платёжная система за подключение денег не берёт: она берёт процент с каждой оплаты. Подключение оплаты в корзину идёт отдельным шагом, когда сайт готов полностью: <a href="#pay">как это будет</a>.</p>
+      <div class="calc">
+        <label>Оборот в месяц <b id="sumOut">100 000 ₽</b></label>
+        <input type="range" id="sum" min="100000" max="3000000" step="100000" value="100000" aria-label="Оборот в месяц">
+        <div id="bars"></div>
+        <p class="priv" style="margin:6px 0 0">У Робокассы ставка снижается с оборотом: от 300 тыс., 700 тыс. и 3 млн ₽ в месяц. У ЮKassa ставка одна до 5 млн ₽, дальше индивидуально. Т-Банк считает ставку индивидуально: если счёт ИП там, стоит спросить менеджера.</p>
+      </div>
+      <p><b>Чек нужен уже сейчас.</b> При оплате по ссылке ИП тоже обязан выдать чек ( закон 54-ФЗ). Исключение одно: ИП на НПД, там чек через «Мой налог». В Робокассе и ЮKassa ссылку на оплату можно выставить прямо из их кабинета, без сайта, и чек уйдёт сам. Поэтому платёжку удобно завести уже сейчас, а в корзину встроить потом.</p>
+      <p>Какая у тебя система налогообложения? От неё зависит, как оформлять чеки. Добавил вопрос в список ниже.</p>
+    </div>
+  </details>
+
+  <p class="src">Источники: справка Тильды про <a href="https://help-ru.tilda.cc/forms/max" target="_blank" rel="noopener">MAX</a>, <a href="https://help-ru.tilda.cc/forms/telegram" target="_blank" rel="noopener">Telegram</a>, <a href="https://help-ru.tilda.cc/privacy-policy-notification" target="_blank" rel="noopener">персональные данные</a>, <a href="https://help-ru.tilda.cc/customdomain" target="_blank" rel="noopener">домен</a>, <a href="https://help-ru.tilda.cc/online-store/payment-systems" target="_blank" rel="noopener">платёжные системы</a>; <a href="https://tilda.cc/ru/pricing/" target="_blank" rel="noopener">тарифы Тильды</a>, <a href="https://tilda.ru/ru/free-domain/" target="_blank" rel="noopener">домен в подарок</a>; <a href="https://yookassa.ru/fees/" target="_blank" rel="noopener">тарифы ЮKassa</a>, <a href="https://robokassa.com/solutions/business/priem-platezhey-dlya-ip/" target="_blank" rel="noopener">тарифы Робокассы</a>.</p>
+</div></section>
+
+<!-- ================= ЧТО НУЖНО ================= -->
+<section class="block" id="need"><div class="wrap">
+  <span class="script">что нужно от тебя</span>
+  <h2>Семь пунктов, и всё на месте</h2>
+  <p class="lead">Заполняй прямо здесь. Потом одна кнопка скопирует ответы, и останется вставить их мне в Telegram.</p>
+
+  <div class="prog"><div class="track"><i id="trk" style="width:0"></i></div><b id="cnt">0 из 7</b></div>
+
+  <div class="need" id="needList">
+    <div class="ask" data-k="dlv"><span class="n">1</span><h3>Цены доставки</h3><p>Сейчас стоят примерные, поправлю на твои.</p>
+      <div class="fields">
+        <label class="f">СДЭК до пункта выдачи<input data-f="СДЭК" placeholder="сейчас 400 ₽" inputmode="numeric"></label>
+        <label class="f">Курьер по Петербургу<input data-f="Курьер" placeholder="сейчас 500 ₽" inputmode="numeric"></label>
+        <label class="f">Самовывоз<input data-f="Самовывоз" placeholder="сейчас бесплатно"></label>
+      </div></div>
+
+    <div class="ask" data-k="prc"><span class="n">2</span><h3>Цены изделий</h3><p>Этих цен не было в постах, поэтому они скрыты.</p>
+      <div class="fields">
+        <label class="f">Terra<input data-f="Terra" inputmode="numeric"></label>
+        <label class="f">Mist<input data-f="Mist" inputmode="numeric"></label>
+        <label class="f">Area XS<input data-f="Area XS" inputmode="numeric"></label>
+        <label class="f">Area S<input data-f="Area S" inputmode="numeric"></label>
+        <label class="f">Area M<input data-f="Area M" inputmode="numeric"></label>
+        <label class="f">Velvet<input data-f="Velvet" inputmode="numeric"></label>
+        <label class="f">Капсула целиком<input data-f="Капсула" inputmode="numeric"></label>
+      </div></div>
+
+    <div class="ask" data-k="stk"><span class="n">3</span><h3>Остатки</h3><p>Сколько штук каждого изделия есть сейчас.</p>
+      <div class="fields one"><label class="f">По каждому изделию<textarea data-f="Остатки" rows="5" placeholder="Alula 2, Linea 1, Aila 3…"></textarea></label></div></div>
+
+    <div class="ask" data-k="req"><span class="n">4</span><h3>Реквизиты ИП для оферты</h3><p>Без них оферта неполная.</p>
+      <div class="fields">
+        <label class="f" style="grid-column:1/3">ФИО полностью<input data-f="ФИО"></label>
+        <label class="f">ИНН<input data-f="ИНН" inputmode="numeric"></label>
+        <label class="f">ОГРНИП<input data-f="ОГРНИП" inputmode="numeric"></label>
+        <label class="f" style="grid-column:1/3">Почта<input data-f="Почта" type="email"></label>
+      </div></div>
+
+    <div class="ask" data-k="promo"><span class="n">5</span><h3>Скидка 10% на первую покупку</h3><p>На сайте она обещана. Действует?</p>
+      <div class="yn" id="yn"><button type="button" data-v="Да" aria-pressed="false">Да</button><button type="button" data-v="Нет" aria-pressed="false">Нет</button></div>
+      <div class="fields one" id="promoF"><label class="f">Какой промокод<input data-f="Промокод" placeholder="например, SEREN10"></label></div></div>
+
+    <div class="ask" data-k="ala"><span class="n">6</span><h3>Размер чехла Ala</h3><p>В посте 25 × 18 × 12, похоже на опечатку: для ноутбука маловато.</p>
+      <div class="fields one"><label class="f">Правильный размер<input data-f="Размер Ala" placeholder="длина × ширина × высота, см"></label></div></div>
+
+    <div class="ask" data-k="tax"><span class="n">7</span><h3>Система налогообложения</h3><p>От неё зависит, как пробивать чеки при оплате.</p>
+      <div class="fields one"><label class="f">УСН, патент, НПД или другая<input data-f="Налог"></label></div></div>
+  </div>
+
+  <div class="send">
+    <button class="btn" id="copy" type="button">Скопировать ответы</button>
+    <a class="btn ghost" href="https://t.me/vh220" target="_blank" rel="noopener">Открыть Telegram</a>
+    <span class="toast" id="toast">Скопировано, вставь в чат 👍</span>
+  </div>
+  <p class="priv">Что вписываешь, остаётся только в твоём браузере и никуда не отправляется, пока сама не скопируешь.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span class="script">Sereń</span>
+  <div>Сайт: <a href="https://visit-newborn-biotite.tilda.ws" target="_blank" rel="noopener">visit-newborn-biotite.tilda.ws</a></div>
+  <div>Собрал Владимир · <a href="https://t.me/vh220" target="_blank" rel="noopener">@vh220</a></div>
+</div></footer>
+
+<script>
+(function(){
+/* ---------- молния ---------- */
+var hero=document.getElementById('top'),stage=document.getElementById('stage'),fl=document.getElementById('fl'),fr=document.getElementById('fr'),
+    svg=document.getElementById('teeth'),pull=document.getElementById('pull'),tassel=document.getElementById('tassel'),
+    label=document.getElementById('label'),hint=document.getElementById('hint'),nav=document.getElementById('nav');
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var p=0,shown=-1,sw=0,swv=0,lastX=0;
+function range(){return Math.max(1,hero.offsetHeight-innerHeight)}
+function edge(W,H,pp,side){
+  var cx=W/2,vy=pp*H*1.25,g=W*.78*Math.min(1,pp*1.7),pts=[];
+  for(var i=0;i<=26;i++){var t=i/26,y=t*vy,x=cx+side*g*Math.pow(1-t,1.2);pts.push([x,y])}
+  return {pts:pts,vy:vy,cx:cx};
+}
+function draw(){
+  var W=stage.clientWidth,H=stage.clientHeight,L=edge(W,H,p,-1),R=edge(W,H,p,1),cx=L.cx,vy=Math.min(L.vy,H+200);
+  var lp=['0px 0px'],rp=[(W)+'px 0px'];
+  L.pts.forEach(function(q){lp.push(q[0]+'px '+q[1]+'px')});lp.push(cx+'px '+H+'px','0px '+H+'px');
+  R.pts.forEach(function(q){rp.push(q[0]+'px '+q[1]+'px')});rp.push(cx+'px '+H+'px',W+'px '+H+'px');
+  rp.splice(1,0,R.pts[0][0]+'px 0px');
+  fl.style.clipPath='polygon('+lp.join(',')+')';
+  fr.style.clipPath='polygon('+rp.join(',')+')';
+  var ls=L.pts.map(function(q){return q.join(',')}).join(' '),rs=R.pts.map(function(q){return q.join(',')}).join(' ');
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  svg.innerHTML=
+    '<polyline points="'+ls+'" fill="none" stroke="#e8dcc2" stroke-width="12"/>'+
+    '<polyline points="'+rs+'" fill="none" stroke="#e8dcc2" stroke-width="12"/>'+
+    '<polyline points="'+ls+'" fill="none" stroke="#b8975a" stroke-width="7" stroke-dasharray="2.2 2.6"/>'+
+    '<polyline points="'+rs+'" fill="none" stroke="#b8975a" stroke-width="7" stroke-dasharray="2.2 2.6"/>'+
+    (vy<H?'<line x1="'+cx+'" y1="'+vy+'" x2="'+cx+'" y2="'+H+'" stroke="#e8dcc2" stroke-width="16"/>'+
+          '<line x1="'+cx+'" y1="'+vy+'" x2="'+cx+'" y2="'+H+'" stroke="#a88648" stroke-width="12" stroke-dasharray="2.2 2.2"/>':'');
+  pull.style.transform='translate('+cx+'px,'+vy+'px)';
+  pull.style.display=vy>H+40?'none':'';
+  label.style.opacity=Math.max(0,1-p*2.2);
+  label.style.transform='translateY(-50%) rotate(-2.5deg) translateX('+(-p*120)+'px)';
+  hint.style.opacity=p>.05?0:1;
+}
+function onScroll(){
+  var y=scrollY;p=reduce?1:Math.min(1,Math.max(0,y/range()));
+  nav.classList.toggle('on',y>hero.offsetHeight-140);
+  if(p!==shown){shown=p;draw()}
+  spy();
+}
+/* качание кисти */
+function swing(){
+  var x=pull.getBoundingClientRect().left,v=x-lastX;lastX=x;
+  swv+=(-v*.9-sw*.08);swv*=.86;sw+=swv;sw=Math.max(-35,Math.min(35,sw));
+  tassel.style.transform='rotate('+sw+'deg)';requestAnimationFrame(swing);
+}
+/* бегунок тянется пальцем */
+var drag=false;
+pull.addEventListener('pointerdown',function(e){drag=true;pull.setPointerCapture(e.pointerId);e.preventDefault()});
+pull.addEventListener('pointermove',function(e){if(!drag)return;var r=stage.getBoundingClientRect(),H=r.height,
+  pp=Math.min(1,Math.max(0,(e.clientY-r.top)/(H*1.25)));scrollTo(0,hero.offsetTop+pp*range());swv+=e.movementX? -e.movementX*.3:0});
+pull.addEventListener('pointerup',function(){drag=false});
+if(reduce){hero.style.height='100svh'}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',function(){shown=-1;onScroll()});
+onScroll();if(!reduce)requestAnimationFrame(swing);
+
+/* ---------- подсветка меню ---------- */
+var secs=['work','pack','manage','answers','need'].map(function(id){return document.getElementById(id)}),links=document.querySelectorAll('.nav a.l');
+function spy(){if(!secs)return;var cur=-1;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<innerHeight*.4)cur=i});
+  links.forEach(function(a,i){a.classList.toggle('cur',i===cur)})}
+
+/* ---------- появление шагов и счётчики ---------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+document.querySelectorAll('.step').forEach(function(s){io.observe(s)});
+var so=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;so.disconnect();
+  document.querySelectorAll('.stat b').forEach(function(b){var to=+b.dataset.to,t0=performance.now();
+    (function f(t){var k=Math.min(1,(t-t0)/1100);b.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.4});
+so.observe(document.getElementById('stats'));
+
+/* ---------- пакет 5000 ---------- */
+var PACK=[
+ ['done','Бриф','Вместо 15-минутного брифа: твоё письмо, переписка и разбор инстаграма.'],
+ ['done','Структура и тексты','Написаны по твоим постам и подписям, твоими словами.'],
+ ['done','Дизайн с нуля под твой стиль','Шрифты и цвета как в твоих карточках.'],
+ ['done','Молния на первом экране','Тянешь бегунок или листаешь, кисть качается. Такого нет у шаблонов Тильды.'],
+ ['done','Лупа фактуры в историях тканей','Наводишь, и видно плетение ткани.'],
+ ['done','Ткань Botanic для первого экрана','Нарисована по фото твоего принта, чтобы молния была на твоей ткани.'],
+ ['done','Удобно на телефоне, планшете и компьютере','Каждый экран проверен на ширине айфона.'],
+ ['done','Блоки: первый экран, изделия и цены, о бренде, как купить, контакты','Блоки собраны под магазин.'],
+ ['done','Кнопки связи','Telegram и Instagram в подвале и в блоке «Как купить».'],
+ ['done','Политика конфиденциальности и оферта','В подвале сайта. В оферту впишу реквизиты, когда пришлёшь. Галочка согласия для заказа не нужна.'],
+ ['done','Превью ссылки для Telegram и ВК','Ссылка на сайт приходит с картинкой молнии.'],
+ ['todo','Заявки в Telegram или MAX','Заказы уже падают в CRM. Уведомления подключим на твой мессенджер, 5 минут вместе.'],
+ ['todo','Свой домен и https','Подключу домен, например serenstudio.ru, и бесплатный сертификат.'],
+ ['todo','Яндекс Метрика: счётчик, цели, вебвизор','Цели на «В корзину» и оформление заказа, запись действий посетителей. Вместе с ней плашка про cookie.'],
+ ['todo','Базовое SEO','Заголовок и описание для поиска уже есть. Доделаю подписи к картинкам, иконку сайта и проверю заголовки всех страниц.'],
+ ['todo','Два круга правок','Первый: твои цены, остатки, доставка и реквизиты.'],
+ ['todo','Сайт на твоей Тильде','Перенесу сайт в твой личный аккаунт Тильды, зарегистрированный на тебя. Сайт полностью твой, меняешь всё сама.'],
+ ['plus','Страницы магазина','Каталог, о бренде, доставка и оплата. Оферта и политика входят в пакет.'],
+ ['plus','Шаблон карточки товара','Один шаблон на все изделия: фото, цена, размер, материал, описание, кнопка «В корзину». По нему уже 15 карточек со своими адресами, новое изделие получит такую же карточку само.'],
+ ['plus','Каталог Тильды с остатками','Разделы, цены, количество, видимость. На главной и в каталоге один и тот же каталог: новое изделие появится везде само.'],
+ ['plus','15 изделий заведены','Фото, размеры, ткани и тексты из инстаграма. У Alula выбор: с цепочкой или без.'],
+ ['plus','Корзина с доставкой','СДЭК, курьер, самовывоз, адрес, промокод и комментарий к заказу.'],
+ ['plus','CRM заказов со статусами','Новый, Оплачен, Комплектуется, В доставке, Выполнен.'],
+ ['my','Разбор твоих вопросов','Мессенджеры, домен, персональные данные, стоимость оплаты. Часть знал по практике, остальное проверил по справке Тильды и сайтам банков.'],
+ ['my','Эта памятка','Инструкции, ответы и список, что нужно от тебя, в одном месте.']];
+var tagTxt={done:'входит · готово',todo:'входит · доделаю',plus:'сверх пакета',my:'с удовольствием'},itemsEl=document.getElementById('items'),
+    boxes={plus:document.getElementById('extraItems'),my:document.getElementById('joyItems')};
+PACK.forEach(function(x){var d=document.createElement('div');d.className='it '+x[0];d.dataset.s=x[0];
+  d.innerHTML='<b>'+x[1]+'</b><span class="tag">'+tagTxt[x[0]]+'</span><div class="more"><p>'+x[2]+'</p></div>';
+  (boxes[x[0]]||itemsEl).appendChild(d)});
+document.querySelectorAll('#filters button').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('#filters button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  itemsEl.querySelectorAll('.it').forEach(function(it){it.classList.toggle('hide',b.dataset.s!=='all'&&it.dataset.s!==b.dataset.s)})}});
+function cnt(s){return PACK.filter(function(x){return x[0]===s}).length}
+var to2=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;to2.disconnect();
+  [['tIn',cnt('done')],['tTodo',cnt('todo')],['tPlus',cnt('plus')],['tMy',cnt('my')]].forEach(function(a){var b=document.getElementById(a[0]),t0=performance.now();
+    (function f(t){var k=Math.min(1,(t-t0)/1000);b.textContent=Math.round(a[1]*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.3});
+to2.observe(document.querySelector('.tally'));
+
+/* ---------- вкладки ---------- */
+document.querySelectorAll('.tab-b').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.tab-b').forEach(function(x){x.setAttribute('aria-selected',x===b)});
+  document.querySelectorAll('.panel').forEach(function(pn){pn.classList.toggle('on',pn.id===b.dataset.p)})})});
+
+/* ---------- демо каталога ---------- */
+var goods=[
+  {n:'Alula',img:'alula_1',price:5700,q:2,v:true},
+  {n:'Botanic S',img:'botanic_s_1',price:3600,q:1,v:true},
+  {n:'Linea',img:'linea_1',price:8000,q:0,v:true},
+  {n:'Terra',img:'terra_1',price:'',q:3,v:false}];
+var tb=document.querySelector('#tbl tbody'),shop=document.getElementById('shop');
+function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+goods.forEach(function(g,i){
+  var tr=document.createElement('tr');
+  tr.innerHTML='<td class="nm"><img src="img/'+g.img+'.jpg" alt=""><span>'+g.n+'</span></td>'+
+    '<td><input class="price" inputmode="numeric" value="'+g.price+'" placeholder="цена"></td>'+
+    '<td><span class="qty"><button type="button" aria-label="меньше">−</button><output>'+g.q+'</output><button type="button" aria-label="больше">+</button></span></td>'+
+    '<td><button type="button" class="sw" role="switch" aria-checked="'+g.v+'" aria-label="Видимость"></button></td>';
+  tb.appendChild(tr);
+  var c=document.createElement('div');c.className='card';
+  c.innerHTML='<img src="img/'+g.img+'.jpg" alt=""><b>'+g.n+'</b><div class="pr"></div><span class="st"></span>';
+  shop.appendChild(c);g.tr=tr;g.c=c;
+  var bs=tr.querySelectorAll('.qty button');
+  bs[0].onclick=function(){g.q=Math.max(0,g.q-1);upd(g)};bs[1].onclick=function(){g.q++;upd(g)};
+  tr.querySelector('.price').oninput=function(e){g.price=e.target.value.replace(/\D/g,'');upd(g)};
+  tr.querySelector('.sw').onclick=function(e){g.v=!g.v;e.currentTarget.setAttribute('aria-checked',g.v);upd(g)};
+  upd(g);
+});
+function upd(g){
+  g.tr.querySelector('output').textContent=g.q;
+  g.c.querySelector('.pr').textContent=g.price?fmt(g.price)+' ₽':'цена не указана';
+  g.c.querySelector('.st').textContent=!g.price?'Нужна цена':g.q>0?'В корзину':'Нет в наличии';
+  g.c.classList.toggle('out',g.q===0||!g.price);g.c.classList.toggle('off',!g.v);
+}
+
+/* ---------- демо CRM ---------- */
+var cols=['Новый','Оплачен','Комплектуется','В доставке','Выполнен'],
+hints=['<b>Новый.</b> Пришёл заказ. Проверь наличие и отправь покупательнице ссылку на оплату.',
+ '<b>Оплачен.</b> Деньги пришли. Можно собирать заказ.',
+ '<b>Комплектуется.</b> Упаковываешь. Когда отдашь в СДЭК или курьеру, переноси дальше.',
+ '<b>В доставке.</b> Заказ в пути. Скинь покупательнице трек-номер.',
+ '<b>Выполнен.</b> Заказ у покупательницы. Готово 🙌'],cur=0;
+var kb=document.getElementById('kanban'),sh=document.getElementById('stageHint');
+cols.forEach(function(n,i){var c=document.createElement('div');c.className='col';c.innerHTML='<h5>'+n+'</h5>';c.onclick=function(){cur=i;kan()};kb.appendChild(c)});
+function kan(){
+  var cs=kb.querySelectorAll('.col');cs.forEach(function(c,i){c.classList.toggle('cur',i===cur);var o=c.querySelector('.order');if(o)o.remove()});
+  var o=document.createElement('div');o.className='order';
+  o.innerHTML='<b>Заказ 1001</b>Анна, +7 911 …<br>Botanic S + Atlas<br>4 600 ₽ + СДЭК 400 ₽'+(cur<4?'<button class="next" type="button">Дальше →</button>':'');
+  cs[cur].appendChild(o);
+  var nx=o.querySelector('.next');if(nx)nx.onclick=function(e){e.stopPropagation();cur++;kan()};
+  sh.innerHTML=hints[cur];
+  kb.scrollTo({left:Math.max(0,cs[cur].offsetLeft-kb.offsetLeft-10),behavior:'smooth'});
+}
+kan();
+
+/* ---------- калькулятор ---------- */
+/* тарифы Робокассы по обороту в месяц, с их калькулятора на 01.11.2026 */
+function rk(s){return s>=3e6?['Продвинутый',3.1,2.0]:s>=7e5?['Оптимальный',3.3,2.3]:s>=3e5?['Лёгкий',3.7,2.5]:['Стартовый',3.9,2.7]}
+function pc(x){return String(x).replace('.',',')+'%'}
+var rows=[
+  {n:'Робокасса · СБП',f:function(s){var t=rk(s);return [t[2],'тариф «'+t[0]+'» · '+pc(t[2])+' · чеки включены']}},
+  {n:'Робокасса · карта',f:function(s){var t=rk(s);return [t[1],'тариф «'+t[0]+'» · '+pc(t[1])+' · чеки включены']}},
+  {n:'ЮKassa · карта',f:function(){return [3.8*1.22,'2,8% + 1% за чек + НДС 22%']}}];
+var bars=document.getElementById('bars'),sum=document.getElementById('sum'),so2=document.getElementById('sumOut');
+rows.forEach(function(r){var d=document.createElement('div');d.className='bar';
+  d.innerHTML='<div>'+r.n+'<small></small></div><div class="t"><i></i></div><div class="v"></div>';bars.appendChild(d);r.el=d});
+function calc(){var s=+sum.value;so2.textContent=fmt(s)+' ₽';
+  rows.forEach(function(r){var x=r.f(s),v=Math.round(s*x[0]/1000)*10;r.el.querySelector('small').textContent=x[1];
+    r.el.querySelector('.v').textContent=(r.n.indexOf('ЮKassa')===0?'≈ ':'')+fmt(v)+' ₽';
+    r.el.querySelector('i').style.width=(x[0]/5*100)+'%'})}
+sum.oninput=calc;calc();
+
+/* ---------- что нужно ---------- */
+var KEY='seren-guide-v1',st={};
+try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){st={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+var inputs=document.querySelectorAll('#needList [data-f]');
+inputs.forEach(function(el){if(st[el.dataset.f])el.value=st[el.dataset.f];el.addEventListener('input',function(){st[el.dataset.f]=el.value;save();prog()})});
+var yn=document.querySelectorAll('#yn button'),promoF=document.getElementById('promoF');
+function setYn(v){st.promo=v;yn.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===v)});promoF.style.display=v==='Нет'?'none':'';save();prog()}
+yn.forEach(function(b){b.onclick=function(){setYn(b.dataset.v)}});
+if(st.promo)setYn(st.promo);
+function filled(card){
+  var k=card.dataset.k,fs=card.querySelectorAll('[data-f]'),any=false,all=true;
+  fs.forEach(function(f){if(f.value.trim())any=true;else all=false});
+  if(k==='promo')return st.promo==='Нет'||(st.promo==='Да'&&any);
+  if(k==='req')return all;
+  return any;
+}
+function prog(){var n=0,cs=document.querySelectorAll('#needList .ask');cs.forEach(function(c){var d=filled(c);c.classList.toggle('done',d);if(d)n++});
+  document.getElementById('cnt').textContent=n+' из '+cs.length;document.getElementById('trk').style.width=(n/cs.length*100)+'%'}
+prog();
+document.getElementById('copy').onclick=function(){
+  var out=['Ответы для сайта Sereń',''];
+  document.querySelectorAll('#needList .ask').forEach(function(c){
+    var h=c.querySelector('h3').textContent,lines=[];
+    if(c.dataset.k==='promo'&&st.promo)lines.push('Действует: '+st.promo);
+    c.querySelectorAll('[data-f]').forEach(function(f){if(f.value.trim())lines.push(f.dataset.f+': '+f.value.trim())});
+    out.push(c.querySelector('.n').textContent+'. '+h);out.push(lines.length?lines.join('\n'):'пока нет');out.push('');
+  });
+  var txt=out.join('\n').trim(),t=document.getElementById('toast');
+  function ok(){t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2600)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb)}else fb();
+  function fb(){var a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()}
+};
+})();
+</script>
+</body>
+</html>
